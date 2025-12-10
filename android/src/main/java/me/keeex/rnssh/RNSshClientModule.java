@@ -154,9 +154,11 @@ public class RNSshClientModule extends ReactContextBaseJavaModule {
       public void run() {
         try {
           SSHClient client = clientPool.get(key);
-          if (client != null && client._session != null && client._session.isConnected()) {
-            // Disconnect current session
-            client._session.disconnect();
+          if (client != null && client._session != null) {
+            // Disconnect current session if connected
+            if (client._session.isConnected()) {
+              client._session.disconnect();
+            }
             
             // Create new session with password authentication
             JSch jsch = new JSch();
