@@ -238,6 +238,8 @@ public class RNSshClientModule extends ReactContextBaseJavaModule {
             Properties properties = new Properties();
             properties.setProperty("StrictHostKeyChecking", "no");
             properties.setProperty("PreferredAuthentications", "publickey");
+            properties.setProperty("PubkeyAcceptedAlgorithms", JSch.getConfig("PubkeyAcceptedAlgorithms") + ",ssh-rsa");
+            properties.setProperty("server_host_key", JSch.getConfig("server_host_key") + ",ssh-rsa");
             session.setConfig(properties);
             
             session.connect();
