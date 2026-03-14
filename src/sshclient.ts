@@ -736,11 +736,12 @@ export default class SSHClient {
    */
   authenticateWithKey(
     privateKey: string,
+    publicKey?: string,
     passphrase?: string,
     callback?: CallbackFunction<void>
   ): Promise<void> {
     return new Promise((resolve, reject) => {
-      const keyPair: KeyPair = { privateKey, passphrase };
+      const keyPair: KeyPair = { privateKey, publicKey, passphrase };
       RNSSHClient.authenticateWithKey(keyPair, this._key, (error: CBError) => {
         if (callback) {
           callback(error ? createSSHError(error) : null);

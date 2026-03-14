@@ -333,7 +333,7 @@ export default class SSHClient {
      * @param callback - Optional callback function to handle the result.
      * @returns A Promise that resolves when authentication is successful.
      */
-    authenticateWithKey(privateKey: string, passphrase?: string, callback?: CallbackFunction<void>): Promise<void>;
+    authenticateWithKey(privateKey: string, publicKey?: string, passphrase?: string, callback?: CallbackFunction<void>): Promise<void>;
     /**
      * Authenticates with the SSH server using a sign callback.
      *

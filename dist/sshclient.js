@@ -465,9 +465,9 @@ export default class SSHClient {
      * @param callback - Optional callback function to handle the result.
      * @returns A Promise that resolves when authentication is successful.
      */
-    authenticateWithKey(privateKey, passphrase, callback) {
+    authenticateWithKey(privateKey, publicKey, passphrase, callback) {
         return new Promise((resolve, reject) => {
-            const keyPair = { privateKey, passphrase };
+            const keyPair = { privateKey, publicKey, passphrase };
             RNSSHClient.authenticateWithKey(keyPair, this._key, (error) => {
                 if (callback) {
                     callback(error ? createSSHError(error) : null);
